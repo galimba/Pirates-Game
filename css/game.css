@@ -1,0 +1,9 @@
+body,html { /* Remove margins */
+	margin: 0px;
+	position: relative;
+	background-color:#9FC7E1; 
+}
+canvas { /* Center the canvas */
+	margin:auto;
+	border: 1px solid black
+}

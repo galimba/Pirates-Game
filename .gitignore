@@ -1,0 +1,9 @@
+
+# Other files specific to this folder
+*.gif
+*.meta
+*.gif.png
+*.py
+
+/MultiplayerGame/phaser-health-meter-master/
+node_modules/
