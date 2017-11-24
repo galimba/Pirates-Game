@@ -11,6 +11,7 @@ This game uses the package manager for node.js, npm to install the dependencies 
 ### Requirements 
 * Node.js (https://nodejs.org/en/)
 * Modern Web Browser (Chrome, Firefox)
+
 To run it:
 * Download or clone the repository 
 * Run 'npm install' inside
