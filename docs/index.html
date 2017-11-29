@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Testing out Github Formatting</title>
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="author" content="David Li">
+    <meta name="author" content="Collaborator Two Name">
+    <meta name="author" content="Another Collaborator">
+    <meta name="dcterms.date" content="2016-12-12">
+    <meta name="description" content="Your project description, to be shown in search engines results.">
+    <meta name="keywords" content="David Li, coursework, testing, search engines, indexing">
+    <link rel="stylesheet" href="stylesheets/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="stylesheets/cayman.css">
+    <link rel="stylesheet" href="stylesheets/highlight.css">
+    <script src="javascripts/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="stylesheets/your_custom.css">
+    <link rel="stylesheet" href="stylesheets/another_stylesheet.css">
+    <!-- anything you put here will go verbatim in the header section
+         Useful for adding javascripts, custom metadata, and so on... -->
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">CENG 356 Software Engineering Design</h1>
+      <h2 class="project-tagline">Learning how to use Github Pages</h2>
+      <a href="https://github.com/FriendlyUser/Pirates-Game" class="btn">View on GitHub</a>
+      <a href="https://github.com/FriendlyUser/Pirates-Game/archive/master.zip" class="btn">Download .zip</a>
+      <a href="https://github.com/FriendlyUser/Pirates-Game/archive/master.tar.gz" class="btn">Download .tar.gz</a>
+    </section>
+    <section class="main-content">
+ 
+<!-- anything you put here will go before the opening <body> tag
+     (ie: before the README’s contents) Markdown will become HTML  -->
+<section id="pirates-game" class="level1"><h1>Pirates-Game</h1><p>CENG 356 Simple Networked Game — an simple game that implementation of a client-server architecture.</p><p>This project contains the code for the multiplayer game based on tutorials/online resources with Socket.io and Phaser.</p><section id="installation" class="level2"><h2>Installation</h2><p>This game uses the package manager for node.js, npm to install the dependencies listed in package.json.</p><section id="requirements" class="level3"><h3>Requirements</h3><ul><li>Node.js (<a href="https://nodejs.org/en/" class="uri">https://nodejs.org/en/</a>)</li><li>Modern Web Browser (Chrome, Firefox)</li></ul><p>To run it:</p><ul><li>Download or clone the repository</li><li>Run ‘npm install’ inside</li><li>Run ‘node server’</li><li>Open up <a href="http://localhost:8000" class="uri">http://localhost:8000</a> in your browser</li><li>Open up another window and play!</li></ul><p>Controls are W or UP to move towards mouse and click to shoot. <img src="fileDirectory.png" alt="fileDirectory.png" /></p></section><section id="documentation" class="level3"><h3>Documentation</h3><p>Socket.io relays messages from the client to the server and vice-versa. Information sent from the client-side (browser) include keyboard and mouse input, player collisions with other players, and spawning bullets.</p><p><img src="ClientServer.png" alt="ClientServer.png" /> Furthermore, in order for the player to interact with other players or game objects on the map, the client must communicate with the server. Whenever the player moves, shoots bullets and takes damage, the clients sends a message to the server and then updated information is sent to all the clients. In addition, the server periodically spawns obstacles in the game, and updates the positions of game objects. <img src="SeqDiagramReport.png" alt="SeqDiagramReport.png" /></p><p>If falls below zero health during the game, they will be disconnected from the game. For example, if a low-health player is hit by a bullet, they will be discon-nected, removed from the game and the other clients will be updated. <img src="DisconnectedFromGame.png" alt="DisconnectedFromGame.png" /></p><section id="other-notes" class="level4"><h4>Other Notes</h4><p>The game is available online on heroku <a href="https://piratesmulti.herokuapp.com/" class="uri">https://piratesmulti.herokuapp.com/</a></p><p>This repository contains the finalish version of the code.</p><p>The music for this pirate game is taken from:</p><ul><li>LittleRobotSoundFactory on <a href="https://freesound.org" class="uri">https://freesound.org</a> <a href="https://freesound.org/people/LittleRobotSoundFactory/" class="uri">https://freesound.org/people/LittleRobotSoundFactory/</a></li></ul></section></section></section></section>
+<!-- anything you put here will go before the closing </body> tag
+     (ie: after the README’s contents) Markdown will become HTML  --><hr />
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/jasonlong/cayman-theme">Cayman</a> is maintained by <a href="https://github.com/jasonlong">jasonlong</a>.</span>
+        <span class="site-footer-credits">These pages contain information based on some of the work that I do. Hopefully, I'll be able to create a lot of webpages using this software.</span>
+      </footer>
+
+    </section>
+
+  </body>
+</html>
