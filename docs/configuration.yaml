@@ -26,7 +26,7 @@ your_github_reponame: PiratesGame
 # HTML Metadata -- for <head> section
 # If you don't need a variable, delete its line or comment it out with a `#`!
 # ------------------------------------------------------------------------------
-title: 'Testing out Github Formatting'
+title: 'Simple Networked Game: Pirates Game'
 lang:   en
 date:   December 12, 2016
 author:
