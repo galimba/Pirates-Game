@@ -1,7 +1,7 @@
 {
-  "name": "my-glitch-app",
-  "version": "0.0.1",
-  "description": "What am I about?",
+  "name": "Pirate-Game",
+  "version": "1.1.1",
+  "description": "CENG 356 Simple Networked Game --- an simple game that implementation of a client-server architecture.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -14,12 +14,12 @@
     "node": "6.10.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/welcome-project"
+    "url": "https://github.com/FriendlyUser/Pirates-Game"
   },
   "license": "MIT",
   "keywords": [
     "node",
-    "glitch",
+    "phaser",
     "express"
   ]
 }

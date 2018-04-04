@@ -2,7 +2,7 @@
 
 CENG 356 Simple Networked Game --- an simple game that implementation of a client-server architecture.
 
-This project contains the code for the multiplayer game based on tutorials/online resources with Socket.io and Phaser. 
+This project contains the code for the multiplayer game based on tutorials/online resources with Socket.io and Phaser. The game is available online on heroku https://piratesmulti.herokuapp.com/
 
 ## Installation
 
@@ -22,10 +22,8 @@ To run it:
 Controls are W or UP to move towards mouse and click to shoot.
 
 #### Other Notes 
-The game is available online on heroku
-https://piratesmulti.herokuapp.com/
 
-This repository contains the finalish version of the code.
+This repository contains the final version of the code.
 
-The music for this pirate game is taken from:
-* LittleRobotSoundFactory on https://freesound.org https://freesound.org/people/LittleRobotSoundFactory/
+I do not own the music used in this game. The music for this pirate game is taken from:
+LittleRobotSoundFactory on https://freesound.org/people/LittleRobotSoundFactory/

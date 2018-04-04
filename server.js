@@ -9,6 +9,11 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/index.html'); 
 });
 
+// Serve the index page 
+app.get("/favicon.ico", function (request, response) {
+  response.sendFile(__dirname + '/favicon.ico'); 
+});
+
 // Serve the assets directory
 app.use('/assets',express.static('assets'))
 app.use('/assets/sound',express.static('/sound'))
