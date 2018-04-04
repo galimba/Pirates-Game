@@ -3,16 +3,23 @@ var app = express();
 var http = require('http').Server(app);
 // var io = require('socket.io')(http); // Here's where we include socket.io as a node module 
 var io = require('socket.io').listen(http);
+const https = require('https');
 
 // Serve the index page 
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/index.html'); 
 });
 
-// Serve the index page 
+// Serve the icon
 app.get("/favicon.ico", function (request, response) {
   response.sendFile(__dirname + '/favicon.ico'); 
 });
+
+// Hit the simple bot "server"
+app.listen(process.env.PORT || 8000);
+setInterval(() => {
+  https.get(`https://table-scrapper.herokuapp.com/`);
+}, 5000);
 
 // Serve the assets directory
 app.use('/assets',express.static('assets'))
