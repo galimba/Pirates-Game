@@ -15,11 +15,6 @@ app.get("/favicon.ico", function (request, response) {
   response.sendFile(__dirname + '/favicon.ico'); 
 });
 
-// Hit the simple bot "server"
-app.listen(process.env.PORT || 8000);
-setInterval(() => {
-  https.get(`https://table-scrapper.herokuapp.com/`);
-}, 5000);
 
 // Serve the assets directory
 app.use('/assets',express.static('assets'))
@@ -32,7 +27,14 @@ app.use('/css',express.static(__dirname + '/css'));
 app.set('port', (process.env.PORT || 8000));
 http.listen(app.get('port'), function(){
   console.log('listening on port',app.get('port'));
+  setInterval(() => {
+		https.get('https://table-scrapper.herokuapp.com/');
+	}, 25000); // spawn ships every 25 seconds
 });
+
+// Hit the simple bot "server"
+// app.listen(process.env.PORT || 8000);
+
 
 var players = {}; //Keeps a table of all players, the key is the socket id
 var bullet_array = []; // Keeps track of all the bullets to update them on the server 
