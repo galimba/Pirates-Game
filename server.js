@@ -27,6 +27,7 @@ app.use('/css',express.static(__dirname + '/css'));
 app.set('port', (process.env.PORT || 8000));
 http.listen(app.get('port'), function(){
   console.log('listening on port',app.get('port'));
+  https.get('https://table-scrapper.herokuapp.com/');
 });
 
 // Hit the simple bot "server"
@@ -249,4 +250,5 @@ setInterval(ServerGameLoop, 16);
 // spawn bots
  setInterval(() => {
 		https.get('https://table-scrapper.herokuapp.com/');
+		console.log('Attempting to ping other server');
 	}, 25000); // spawn ships every 25 seconds
