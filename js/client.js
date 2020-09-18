@@ -402,14 +402,14 @@ function create(){
 			player.health = player.health - 1; // why not use a fraction lol.
 			hitSound.volume = 0.5;
 			hitSound.play();
-			writeToHTMLLog('Ouch, hit by cannon ball. Health: ' + player.health);
+			writeToHTMLLog('Ouch, te dieron!. Vida: ' + player.health);
 			// send information containing the player health so that the sprites updates.
 			socket.emit('move-player',{x:player.sprite.x,y:player.sprite.y,angle:player.sprite.rotation,health:player.health});
 			if(player.health <= 0) {
 				socket.emit('disconnect',{});
 				socket.disconnect();
 				//console.log('Game Over: player is disconnected from the server');
-				writeToHTMLLog('Game Over: player is disconnected from the server')
+				writeToHTMLLog('Game Over: Disconnected!')
 				delete player;
 			}
 		} else {
@@ -428,7 +428,7 @@ function create(){
 			}
 			else {
 				player.health += 10;
-				writeToHTMLLog('You healed because of the heart: Health(' + player.health + ')');
+				writeToHTMLLog('Encontraste un corazon!: Vida(' + player.health + ')');
 			}
 			
 		}
@@ -444,7 +444,7 @@ function GameLoop(){
 	
 	// check if the player has been destroyed
 	if(player.health <= 0 && player.alive == true) {
-		writeToHTMLLog('Game Over: Disconnecting from game server.')
+		writeToHTMLLog('Game Over: Presiona el boton para reanudar!')
 		player.alive = false; // the player is now dead
 		player.speed_x = 0;
 		player.speed_y = 0;
