@@ -1,10 +1,14 @@
 # Pirates-Game
 
-CENG 356 Simple Networked Game --- an simple game that implementation of a client-server architecture.
+Simple NodeJS + Socket.io based pirate game forked from https://github.com/FriendlyUser.
 
-This project contains the code for the multiplayer game based on tutorials/online resources with Socket.io and Phaser. The game is available online on heroku https://piratesmulti.herokuapp.com/
+This project contains the code for the multiplayer game based on tutorials/online resources with Socket.io and Phaser. The game is available online on heroku https://pirate.ar
 
-## Installation
+
+
+##########################
+
+### Installation
 
 This game uses the package manager for node.js, npm to install the dependencies listed in package.json.
 
@@ -13,6 +17,10 @@ This game uses the package manager for node.js, npm to install the dependencies 
 * Modern Web Browser (Chrome, Firefox)
 
 To run it:
+* Use the Dockerfile
+
+`or`
+
 * Download or clone the repository 
 * Run 'npm install' inside
 * Run 'node server' 
@@ -36,8 +44,6 @@ If falls below zero health during the game, they will be disconnected from the g
 
 
 #### Other Notes 
-
-This repository contains the final version of the code.
 
 I do not own the music used in this game. The music for this pirate game is taken from:
 LittleRobotSoundFactory on https://freesound.org/people/LittleRobotSoundFactory/
