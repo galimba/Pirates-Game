@@ -17,15 +17,15 @@ var playersConnectingText;
 var loadText;
 var socket; //Declare it in this scope, initialize in the `create` function
 var other_players = {};
-var bulletSpeed = 17.5; // speed of the bullet
+var bulletSpeed = 10; // speed of the bullet
 var player = {
 	sprite:null,//Will hold the sprite when it's created 
 	speed_x:0,// This is the speed it's currently moving at
 	speed_y:0,
-	speed:0.5, // This is the parameter for how fast it should move 
+	speed:0.4, // This is the parameter for how fast it should move 
 	friction:0.95,
 	health:100,
-	cannonBalls:15,
+	cannonBalls:7,
 	//shipType:null,
 	alive: true,
 	shot:false,
@@ -78,7 +78,7 @@ var player = {
 			}
 		}
 		else if ((game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) || game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) && this.cannonBalls <= 0) {
-			this.cannonBalls = this.cannonBalls +5;
+			this.cannonBalls = this.cannonBalls +7;
 			updateCannonballs(this.cannonBalls);
 			writeToHTMLLog("Cannonballs: ("+ this.cannonBalls + ') \t \t' + "Player Health: ("+ this.health + ')')
 			//console.log('Loading cannonballs: ' + this.cannonBalls)
@@ -142,7 +142,7 @@ function preload(){
 	//text = game.add.text(, "- phaser gradient text -");
 
     //  Centers the text
-    loadText.anchor.set(0.5);
+    loadText.anchor.set(0.4);
     loadText.align = 'center';
 
     //  Our font + size
