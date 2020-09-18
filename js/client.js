@@ -59,7 +59,7 @@ var player = {
 		// Shoot bullet 
 		if(game.input.activePointer.leftButton.isDown && !this.shot){
 			if (this.cannonBalls <= 0) {
-				writeToHTMLLog('Press spacebar or enter to reload cannonballs.');
+				writeToHTMLLog('Presiona la barra espaciadora para RECARGAR BALAS DEL CAÑON!');
 				loadSound.play();
 				this.shot = true;
 			}
@@ -80,7 +80,7 @@ var player = {
 		else if ((game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) || game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) && this.cannonBalls <= 0) {
 			this.cannonBalls = this.cannonBalls +7;
 			updateCannonballs(this.cannonBalls);
-			writeToHTMLLog("Cannonballs: ("+ this.cannonBalls + ') \t \t' + "Player Health: ("+ this.health + ')')
+			writeToHTMLLog("Balas de Cañon: ("+ this.cannonBalls + ') \t \t' + "Vida restante: ("+ this.health + ')')
 			//console.log('Loading cannonballs: ' + this.cannonBalls)
 		
 			//console.log('List Items: ' +document.getElementById("log").getElementsByTagName("li").length)
@@ -138,7 +138,7 @@ function preload(){
 	game.load.audio('fireCannonball', ASSET_URL + 'sound/' + 'cannonball.wav');
 	game.load.audio('soundtrack', ASSET_URL + 'sound/' + 'pirates.wav');
 	game.load.audio('healing', ASSET_URL + 'sound/' + 'healing.wav');
-	loadText = game.add.text(game.world.centerX, game.world.centerY, ' Connected to Server,' + '\n' + 'Waiting for the game to load');
+	loadText = game.add.text(game.world.centerX, game.world.centerY, ' Conectado al servidor,' + '\n' + 'Cargando el juego...');
 	//text = game.add.text(, "- phaser gradient text -");
 
     //  Centers the text
@@ -165,7 +165,7 @@ function preload(){
 }
 //	This callback is sent the following parameters:
 function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
-	loadText.setText(' Connected to Server,' + '\n' + 'Waiting for the game to load. \n'  + "File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+	loadText.setText(' Conectado al servidor,' + '\n' + 'Cargando el juego. \n'  + "Archivos cargados: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
 	//text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
 }
 
@@ -174,9 +174,9 @@ function loadComplete() {
 	loadSound =  game.add.audio('loaded');
 	loadSound.play();
 	loadText.setText('');
-	writeToHTMLLog('Player Ship Created and ready to go.');
-	writeToHTMLLog('Controls: Right Click to Shoot and use W or UP key to move. ');
-	writeToHTMLLog('Controls: The ship will move towards the mouse cursor.');
+	writeToHTMLLog('Nuevo barco! Listos para la batalla.');
+	writeToHTMLLog('Controles: Mouse Derecho para disparar | W o flechitas para moverse. ');
+	writeToHTMLLog('Controles: Tu barco se desplazara hacia donde apuntes tu mouse!');
 
 }
 
@@ -213,15 +213,15 @@ function create(){
 	game.physics.enable([player], Phaser.Physics.ARCADE);
 	player.sprite.anchor.setTo(0.5,0.5);
    
-	shotsLeft = game.add.text(625, 475, "Shots Left: " + player.cannonBalls, { font: "bold 16px Arial", fill: "#ffffff", align: "center" });
+	shotsLeft = game.add.text(625, 475, "Balas: " + player.cannonBalls, { font: "bold 16px Arial", fill: "#ffffff", align: "center" });
 	shotsLeft.fixedToCamera = true;
 	numOfEnemiesText = game.add.text(5, 475, "Player ID: ", { font: "bold 16px Arial", fill: "#ffffff", align: "center" });
 	numOfEnemiesText.fixedToCamera = true;
 	game.world.setBounds(0, 0, WORLD_SIZE.w, WORLD_SIZE.h);
 	//if (numofEnemyPlayers <= 0 && playersConnectingText == '') {
 	if (numofEnemyPlayers <= 0) {
-		writeToHTMLLog('Waiting for players to join');
-		playersConnectingText = game.add.text(250,10, "Waiting for other players to join", { font: "bold 16px Arial", fill: "#ffffff", align: "center" });
+		writeToHTMLLog('Esperando a otros jugadores');
+		playersConnectingText = game.add.text(250,10, "Esperando a otros jugadores", { font: "bold 16px Arial", fill: "#ffffff", align: "center" });
 		playersConnectingText.fixedToCamera = true;
 		//console.log(playersConnectingText)
 	}
@@ -273,7 +273,7 @@ function create(){
 		for(var id in other_players){
 			if(!players_found[id]){
 				numofEnemyPlayers --;
-				writeToHTMLLog('Player [' + id + ']' + ' Disconnected from the Game.');
+				writeToHTMLLog('Player [' + id + ']' + ' se ha desconectado.');
 				if(playersConnectingText.text == '') {
 					playersConnectingText.setText('Player Destroyed');
 					playersConnectingText.alpha = 1;
@@ -283,7 +283,7 @@ function create(){
 			}
 		}
 		// print list of players in game screen
-		numOfEnemiesText.setText("Enemy Ships: " + numofEnemyPlayers );
+		numOfEnemiesText.setText("Navios enemigos: " + numofEnemyPlayers );
 		// print waiting for players to connect message
 		if (numofEnemyPlayers > 0 & playersConnectingText.text != '' & playersConnectingText.alpha != 0) {
 			game.add.tween(playersConnectingText)
@@ -587,7 +587,7 @@ function writeToHTMLLog(message) {
 	document.getElementById("log").innerHTML+="<li>" + message+ "</li> \n";
 }
 function updateCannonballs(cannonBalls) {
-	shotsLeft.setText("Shots Left: " + cannonBalls);
+	shotsLeft.setText("Balas: " + cannonBalls);
 	//console.log(cannonBalls)
 }
 // Disconnect the player and display unhelpful messages
