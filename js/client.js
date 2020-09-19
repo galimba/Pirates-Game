@@ -22,12 +22,15 @@ var player = {
 	sprite:null,//Will hold the sprite when it's created 
 	speed_x:0,// This is the speed it's currently moving at
 	speed_y:0,
-	speed:0.4, // This is the parameter for how fast it should move 
-	friction:0.95,
+	speed:0.05, // This is the parameter for how fast it should move 
+	friction:0.99,
 	health:100,
-	cannonBalls:7,
+	cannonBalls:3,
 	//shipType:null,
 	alive: true,
+	heartsCollected:0,
+	shipsDestroyed:0,
+	driftWoodDestroyed:0,
 	shot:false,
 	update: function(){
 		// Lerp rotation towards mouse
@@ -42,9 +45,10 @@ var player = {
 		// Move forward
 		if(game.input.keyboard.isDown(Phaser.Keyboard.W) || game.input.keyboard.isDown(Phaser.Keyboard.UP)){
 			// used to decrease speed of player as health decreases
-			var healthLeft = this.health - HEALTH_MAX; 
-			this.speed_x += Math.cos(this.sprite.rotation + Math.PI/2)*this.speed*this.health/100;
-			this.speed_y += Math.sin(this.sprite.rotation + Math.PI/2) * this.speed*this.health/100;
+			//var healthLeft = this.health - HEALTH_MAX; 
+			//this.speed_x += Math.cos(this.sprite.rotation + Math.PI/2) * this.speed*((this.health/100));
+			this.speed_x += Math.cos(this.sprite.rotation + Math.PI/2) * this.speed;
+			this.speed_y += Math.sin(this.sprite.rotation + Math.PI/2) * this.speed;
 		}
 		this.sprite.x += this.speed_x;
 		this.sprite.y += this.speed_y;
@@ -78,7 +82,7 @@ var player = {
 			}
 		}
 		else if ((game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) || game.input.keyboard.isDown(Phaser.Keyboard.ENTER)) && this.cannonBalls <= 0) {
-			this.cannonBalls = this.cannonBalls +7;
+			this.cannonBalls = this.cannonBalls +3;
 			updateCannonballs(this.cannonBalls);
 			writeToHTMLLog("Balas de Cañon: ("+ this.cannonBalls + ') \t \t' + "Vida restante: ("+ this.health + ')')
 			//console.log('Loading cannonballs: ' + this.cannonBalls)
@@ -131,7 +135,7 @@ function preload(){
 	game.load.image('bullet', ASSET_URL + 'cannon_ball.png');
 	game.load.image('water', ASSET_URL + 'water_tile.png');
 	game.load.image('healthPack', ASSET_URL + 'heart.png');
-	game.load.image('driftWood', ASSET_URL + 'dinghyLarge3.png')
+	game.load.image('driftWood', ASSET_URL + 'driftWood3.png')
 	// play ready sound once game is loaded
 	game.load.audio('loaded', ASSET_URL + 'sound/' + 'ready.wav');
 	game.load.audio('hit', ASSET_URL + 'sound/' + 'thud1.wav');
@@ -165,7 +169,7 @@ function preload(){
 }
 //	This callback is sent the following parameters:
 function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
-	loadText.setText(' Conectado al servidor,' + '\n' + 'Cargando el juego. \n'  + "Archivos cargados: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+	loadText.setText(' Conectado al servidor,' + '\n' + 'Cargando el juego. \n'  + "Archivos cargados: " + progress + "% - " + totalLoaded + " de " + totalFiles);
 	//text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
 }
 
@@ -456,7 +460,7 @@ function GameLoop(){
 		//	text.fixedToCamera = true;
 		var t = game.add.text(250, 250, "Game Over", { font: "bold 32px Arial", fill: "#ffffff", align: "center" });
 		t.fixedToCamera = true;
-		var t2 = game.add.text(250, 400, "No more Cannonballs", { font: "bold 32px Arial", fill: "#ffffff", align: "center" });
+		var t2 = game.add.text(250, 400, "Presiona el boton para reiniciar" , { font: "bold 32px Arial", fill: "#ffffff", align: "left" });
 		t2.fixedToCamera = true;
 		//t.cameraOffset.setTo(player.x, player.y);
 	}

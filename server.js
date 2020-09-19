@@ -50,19 +50,19 @@ var driftWood_array = [];
 var WORLD_SIZE = {w:1500,h:1000}; //same as the client-side world size
 
 io.on('connection', function(socket){
-	// Listen for a new player trying to connect
-	socket.on('new-player',function(state){
-		console.log("New player joined with state:",state);
-		players[socket.id] = state;
-		// Broadcast a signal to everyone containing the updated players list
-		io.emit('update-players',players);
-		spawnObjectsAllowed = true; // now that a player has connected, allow the server to spawn healthpacks
-	})
+  // Listen for a new player trying to connect
+  socket.on('new-player',function(state){
+    console.log("New player joined with state:",state);
+    players[socket.id] = state;
+    // Broadcast a signal to everyone containing the updated players list
+    io.emit('update-players',players);
+    spawnObjectsAllowed = true; // now that a player has connected, allow the server to spawn healthpacks
+  })
   
   // Listen for a disconnection and update our player table 
   socket.on('disconnect',function(state){
     delete players[socket.id];
-	console.log("Player disconnected with state: ",state);
+	  console.log("Player disconnected with state: ",state);
     io.emit('update-players',players);
   }) 
   
@@ -72,7 +72,7 @@ io.on('connection', function(socket){
     players[socket.id].x = position_data.x;  
     players[socket.id].y = position_data.y; 
     players[socket.id].angle = position_data.angle; 
-	players[socket.id].health = position_data.health; // change sprites based on health
+	  players[socket.id].health = position_data.health; // change sprites based on health
     io.emit('update-players',players);
   })
  
@@ -164,12 +164,12 @@ function ServerGameLoop(){
 		// adjust distance based on what will be the final distance between player and ships
         if(dist < 40){
           //io.emit('player-hit',id); // Tell everyone this player got hit
-		  console.log('Collision between player[' + id + '], healthPack[' + i + ']')
-		  healthPack_array.splice(i,1);
-		  i--;
-		  numHealthPacks--;
-		  // inform player that health is restored
-		  io.emit('player-heal',id); // Tell everyone this player got hit
+          console.log('Collision between player[' + id + '], healthPack[' + i + ']')
+          healthPack_array.splice(i,1);
+          i--;
+          numHealthPacks--;
+          // inform player that health is restored
+          io.emit('player-heal',id); // Tell everyone this player got hit
         }
 	  // Check if a player is colliding with another player
     }
@@ -189,17 +189,17 @@ function ServerGameLoop(){
     var driftWood = driftWood_array[i];
     driftWood.x += driftWood.speed_x; 
     driftWood.y += driftWood.speed_y; 
-	driftWood.rotation += driftWood.rotateDirection*Math.PI / 200;
-	if(driftWood.rotation > 2*Math.PI) {
-		driftWood.rotation = 0;
-	}
-	//console.log(driftWood.rotation)
-	// Remove the driftwood if goes too far off screen 
+	  driftWood.rotation += driftWood.rotateDirection*Math.PI / 200;
+  	if(driftWood.rotation > 2*Math.PI) {
+	  	driftWood.rotation = 0;
+  	}
+	  //console.log(driftWood.rotation)
+	  // Remove the driftwood if goes too far off screen 
     if(driftWood.x < -10 || driftWood.x > 1500 || driftWood.y < -10 || driftWood.y > 1000){
-		numDriftWood--;
-        driftWood_array.splice(i,1);
-		console.log('driftWood(' + i + ') destroyed, out of bounds. (' + driftWood.x + ',' + driftWood.y + ')' );
-        i--;
+		  numDriftWood--;
+      driftWood_array.splice(i,1);
+		  console.log('driftWood(' + i + ') destroyed, out of bounds. (' + driftWood.x + ',' + driftWood.y + ')' );
+      i--;
     }
   }
   // Tell everyone where the driftwood is:
